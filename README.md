@@ -1,4 +1,11 @@
 # encoding/base64
+[![GoDoc](https://godoc.org/goost.org/encoding/base64?status.svg)](https://godoc.org/goost.org/encoding/base64)
+
+### Install
+```
+go get -v goost.org/encoding/base64
+```
+
 
 ### Performance
 
