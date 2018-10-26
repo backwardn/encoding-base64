@@ -58,7 +58,7 @@ TEXT ·encode12ByteGroups(SB), NOSPLIT, $0-88
 	XORQ SI, SI
 	XORQ DI, DI
 
-	TESTL $(1<<9), runtime·cpuid_ecx(SB) // check for SSSE3 (PHSUFB)
+	TESTB $1, ·hasSSSE3(SB) // check for SSSE3 (PHSUFB)
 	JZ    finish
 
 	MOVQ  src_len+56(FP), BX

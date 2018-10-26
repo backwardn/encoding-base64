@@ -4,6 +4,10 @@
 
 package base64
 
+import (
+	"golang.org/x/sys/cpu"
+)
+
 // go:noescape
 func encode12ByteGroups(lookup []int8, dst, src []byte) (di int, si int)
 
@@ -14,6 +18,8 @@ var lookupStd = []int8{
 var lookupURL = []int8{
 	65, 71, -4, -4, -4, -4, -4, -4, -4, -4, -4, -4, -17, 32, 0, 0,
 }
+
+var hasSSSE3 = cpu.X86.HasSSSE3
 
 func encodeAccelerated(enc *Encoding, dst, src []byte) (int, int) {
 	// If the source slice is less than 12 bytes fallback to the standard
